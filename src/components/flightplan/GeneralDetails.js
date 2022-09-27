@@ -1,4 +1,4 @@
-import { ExternalLinkIcon } from '@chakra-ui/icons';
+import { ExternalLinkIcon, SearchIcon } from '@chakra-ui/icons';
 import {
   Box,
   Grid,
@@ -13,8 +13,10 @@ import {
   Stack,
   createStandaloneToast,
   Tooltip,
+  Image,
+  Collapse,
 } from '@chakra-ui/react';
-import React from 'react';
+import React, { useState } from 'react';
 import Airport from '../Airport';
 import { openInNewTab } from '../../utils/redirect';
 import { displayToast } from '../../utils/toast';
@@ -24,15 +26,25 @@ const GeneralDetails = ({
   destination,
   general,
   skyvectorPlanLink,
+  routeImageLink,
 }) => {
+  const [showRouteMap, setShowRouteMap] = useState(false);
   const copyToClipboard = e => {
     const { toast } = createStandaloneToast();
     navigator.clipboard.writeText(e.target.textContent);
-    displayToast("Text Copied", "Selected text has been copied to your clipboard.", "info")
+    displayToast(
+      'Text Copied',
+      'Selected text has been copied to your clipboard.',
+      'info'
+    );
   };
 
   const openToSkyVector = () => {
     openInNewTab(skyvectorPlanLink);
+  };
+
+  const toggleRouteMap = () => {
+    setShowRouteMap(!showRouteMap);
   };
   return (
     <Box p={2}>
@@ -67,6 +79,13 @@ const GeneralDetails = ({
         </Grid>
         <Text>
           Route
+          <SearchIcon
+            ml={1}
+            w={4}
+            h={4}
+            style={{ cursor: 'pointer' }}
+            onClick={() => toggleRouteMap()}
+          />
           <ExternalLinkIcon
             ml={1}
             w={4}
@@ -75,6 +94,12 @@ const GeneralDetails = ({
             onClick={() => openToSkyVector()}
           />
         </Text>
+        {showRouteMap && (
+          <Collapse in={showRouteMap} animateOpacity>
+            <Image src={routeImageLink} />
+          </Collapse>
+        )}
+
         <Tooltip label="Click to copy to clipboard">
           <Text
             color={'gray.600'}
