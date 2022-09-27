@@ -1,4 +1,4 @@
-import { Button, Heading, Input, VStack } from '@chakra-ui/react';
+import { Button, Heading, Input, Text, VStack } from '@chakra-ui/react';
 import { useState } from 'react';
 
 const Setup = ({ onComplete }) => {
@@ -13,6 +13,7 @@ const Setup = ({ onComplete }) => {
         <Heading>Flightbag</Heading>
         <Heading as="h6" size="xs">
           Enter your simbrief username to get started!
+          <Text color={"red.500"}>For flight simulation use only!</Text>
         </Heading>
         <Input
           placeholder="JohnDoe, BestPilot etc..."
