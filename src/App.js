@@ -1,38 +1,67 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   ChakraProvider,
   Box,
-  Text,
-  Link,
   VStack,
-  Code,
   Grid,
   theme,
+  CloseButton,
+  Tooltip,
 } from '@chakra-ui/react';
 import { ColorModeSwitcher } from './ColorModeSwitcher';
-import { Logo } from './Logo';
+import Setup from './components/setup/Setup';
+import Flightplan from './components/flightplan/Flightplan';
+import { displayToast } from './utils/toast';
 
 function App() {
+  const [setupRequired, setSetupRequired] = useState(true);
+
+  const usernameExists = () => {
+    return localStorage.getItem('u') !== null;
+  };
+
+  const logOut = () => {
+    localStorage.removeItem('u');
+    setSetupRequired(true);
+    displayToast("Logged out","Your username has been deleted and you have been logged out!", "success")
+
+  };
+
+  const setupCompleted = () => {
+    setSetupRequired(false);
+    displayToast("Logged in","Successfully stored your username, can be deleted at anytime.", "success")
+  };
+
+  useEffect(() => {
+    if (usernameExists()) {
+      setSetupRequired(false);
+    } else {
+      setSetupRequired(true);
+    }
+  }, []);
+
   return (
     <ChakraProvider theme={theme}>
       <Box textAlign="center" fontSize="xl">
         <Grid minH="100vh" p={3}>
-          <ColorModeSwitcher justifySelf="flex-end" />
-          <VStack spacing={8}>
-            <Logo h="40vmin" pointerEvents="none" />
-            <Text>
-              Edit <Code fontSize="xl">src/App.js</Code> and save to reload.
-            </Text>
-            <Link
-              color="teal.500"
-              href="https://chakra-ui.com"
-              fontSize="2xl"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learn Chakra
-            </Link>
-          </VStack>
+          <Grid display="flex" flexDirection="row" justifySelf="flex-end">
+            <ColorModeSwitcher />
+            {!setupRequired && (
+              <Tooltip label="Remove username and log out">
+                <CloseButton w={10} h={10} onClick={logOut} />
+              </Tooltip>
+            )}
+          </Grid>
+
+          {setupRequired ? (
+            <Box>
+              <VStack spacing={8}>
+                {setupRequired && <Setup onComplete={setupCompleted} />}
+              </VStack>
+            </Box>
+          ) : (
+            <Flightplan />
+          )}
         </Grid>
       </Box>
     </ChakraProvider>
