@@ -17,6 +17,7 @@ import {
 import React from 'react';
 import Airport from '../Airport';
 import { openInNewTab } from '../../utils/redirect';
+import { displayToast } from '../../utils/toast';
 
 const GeneralDetails = ({
   origin,
@@ -27,14 +28,7 @@ const GeneralDetails = ({
   const copyToClipboard = e => {
     const { toast } = createStandaloneToast();
     navigator.clipboard.writeText(e.target.textContent);
-
-    toast({
-      title: 'Text Copied',
-      description: 'Selected text has been copied to your clipboard.',
-      status: 'info',
-      duration: 9000,
-      isClosable: true,
-    });
+    displayToast("Text Copied", "Selected text has been copied to your clipboard.", "info")
   };
 
   const openToSkyVector = () => {
@@ -115,7 +109,7 @@ const GeneralDetails = ({
           <Stat>
             <StatLabel fontSize="md">Cost Index</StatLabel>
             <StatNumber>{general['costindex']}</StatNumber>
-            <StatHelpText>Route Distance</StatHelpText>
+            <StatHelpText>Recommended</StatHelpText>
           </Stat>
         </SimpleGrid>
       </Container>
