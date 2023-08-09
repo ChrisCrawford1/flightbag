@@ -1,13 +1,12 @@
-import { createStandaloneToast } from "@chakra-ui/react";
+import { createStandaloneToast } from '@chakra-ui/react';
 
 export function displayToast(title, desc, status) {
-    const { toast } = createStandaloneToast();
-    toast({
-        title: title,
-        description: desc,
-        status: status,
-        duration: 9000,
-        isClosable: true,
-      });
-
+  const { toast } = createStandaloneToast();
+  toast({
+    title: title,
+    description: desc,
+    status: status,
+    duration: 5000,
+    isClosable: true,
+  });
 }

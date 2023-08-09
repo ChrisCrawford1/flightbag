@@ -15,13 +15,13 @@ const Flightplan = () => {
   const [routeImageLink, setRouteImageLink] = useState(null);
   const [flightplanReady, setFlightplanReady] = useState(false);
 
-  const parseRouteImages = (images) => {
-    let mapImages = images["map"];
+  const parseRouteImages = images => {
+    let mapImages = images['map'];
     if (mapImages.length > 0) {
-      let baseUrl = images["directory"];
-      setRouteImageLink(`${baseUrl}${mapImages[0]["link"]}`)
+      let baseUrl = images['directory'];
+      setRouteImageLink(`${baseUrl}${mapImages[0]['link']}`);
     }
-  }
+  };
 
   const fetchLatestFlightplan = async () => {
     const simbriefUsername = localStorage.getItem('u');
@@ -35,7 +35,7 @@ const Flightplan = () => {
       setLinks(result.data['links']);
       setGeneralWeights(result.data['weights']);
       setFuel(result.data['fuel']);
-      parseRouteImages(result.data["images"])
+      parseRouteImages(result.data['images']);
       setFlightplanReady(true);
     } catch (err) {
       setFlightplanReady(false);

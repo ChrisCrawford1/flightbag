@@ -15,6 +15,7 @@ import {
   Tooltip,
   Image,
   Collapse,
+  Fade,
 } from '@chakra-ui/react';
 import React, { useState } from 'react';
 import Airport from '../Airport';
@@ -30,7 +31,6 @@ const GeneralDetails = ({
 }) => {
   const [showRouteMap, setShowRouteMap] = useState(false);
   const copyToClipboard = e => {
-    const { toast } = createStandaloneToast();
     navigator.clipboard.writeText(e.target.textContent);
     displayToast(
       'Text Copied',
@@ -95,9 +95,9 @@ const GeneralDetails = ({
           />
         </Text>
         {showRouteMap && (
-          <Collapse in={showRouteMap} animateOpacity>
+          <Fade in={showRouteMap} animateOpacity>
             <Image src={routeImageLink} />
-          </Collapse>
+          </Fade>
         )}
 
         <Tooltip label="Click to copy to clipboard">

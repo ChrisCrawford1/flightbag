@@ -13,7 +13,7 @@ const Setup = ({ onComplete }) => {
         <Heading>Flightbag</Heading>
         <Heading as="h6" size="xs">
           Enter your simbrief username to get started!
-          <Text color={"red.500"}>For flight simulation use only!</Text>
+          <Text color={'red.500'}>For flight simulation use only!</Text>
         </Heading>
         <Input
           placeholder="JohnDoe, BestPilot etc..."

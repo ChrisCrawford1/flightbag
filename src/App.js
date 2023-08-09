@@ -23,13 +23,20 @@ function App() {
   const logOut = () => {
     localStorage.removeItem('u');
     setSetupRequired(true);
-    displayToast("Logged out","Your username has been deleted and you have been logged out!", "success")
-
+    displayToast(
+      'Logged out',
+      'Your username has been deleted and you have been logged out!',
+      'success'
+    );
   };
 
   const setupCompleted = () => {
     setSetupRequired(false);
-    displayToast("Logged in","Successfully stored your username, can be deleted at anytime.", "success")
+    displayToast(
+      'Logged in',
+      'Successfully stored your username, can be deleted at anytime.',
+      'success'
+    );
   };
 
   useEffect(() => {
@@ -38,7 +45,7 @@ function App() {
     } else {
       setSetupRequired(true);
     }
-  }, []);
+  }, [setupRequired]);
 
   return (
     <ChakraProvider theme={theme}>
