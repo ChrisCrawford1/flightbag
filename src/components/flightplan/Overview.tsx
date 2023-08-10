@@ -11,26 +11,36 @@ import {
   Container,
   Text,
   Stack,
-  createStandaloneToast,
   Tooltip,
   Image,
-  Collapse,
-  Fade,
 } from '@chakra-ui/react';
-import React, { useState } from 'react';
-import Airport from '../Airport';
+import { useEffect, useState } from 'react';
+import AirportView from '../AirportView';
 import { openInNewTab } from '../../utils/redirect';
 import { displayToast } from '../../utils/toast';
+import { General, Airport, Images, Links, Aircraft } from '../../types';
 
-const GeneralDetails = ({
+interface OverviewProps {
+  origin: Airport;
+  destination: Airport;
+  general: General;
+  images: Images;
+  links: Links;
+  aircraft: Aircraft;
+}
+
+const Overview = ({
   origin,
   destination,
   general,
-  skyvectorPlanLink,
-  routeImageLink,
-}) => {
+  images,
+  links,
+  aircraft,
+}: OverviewProps) => {
   const [showRouteMap, setShowRouteMap] = useState(false);
-  const copyToClipboard = e => {
+  const [routeImageLink, setRouteImageLink] = useState<string>('');
+
+  const copyToClipboard = (e: any) => {
     navigator.clipboard.writeText(e.target.textContent);
     displayToast(
       'Text Copied',
@@ -39,13 +49,26 @@ const GeneralDetails = ({
     );
   };
 
-  const openToSkyVector = () => {
-    openInNewTab(skyvectorPlanLink);
+  const openToSkyVector = (): void => {
+    openInNewTab(links.skyvector);
   };
 
-  const toggleRouteMap = () => {
+  const toggleRouteMap = (): void => {
     setShowRouteMap(!showRouteMap);
   };
+
+  const parseRouteImages = (images: Images): void => {
+    if (images.map.length > 0) {
+      const baseUrl = images.directory;
+      const link = images.map[0].link;
+      setRouteImageLink(`${baseUrl}${link}`);
+    }
+  };
+
+  useEffect(() => {
+    parseRouteImages(images);
+  }, []);
+
   return (
     <Box p={2}>
       <Stack spacing={4} as={Container} maxW={'3xl'} textAlign={'center'}>
@@ -54,28 +77,15 @@ const GeneralDetails = ({
           <Text
             fontSize={'sm'}
             textColor={'gray.600'}
-          >{`${general['icao_airline']}${general['flight_number']}`}</Text>
+          >{`${general?.icao_airline}${general?.flight_number}`}</Text>
+          <Text fontSize={'xs'} textColor={'gray.600'}>
+            {aircraft.name}
+          </Text>
         </Heading>
         <Grid display="flex" flexDirection="row" justifyContent="space-between">
-          <Airport
-            airportName={origin['name']}
-            airportIcao={origin['icao_code']}
-            runwayInUse={origin['plan_rwy']}
-            transAlt={origin['trans_alt']}
-            transLvl={origin['trans_level']}
-            metar={origin['metar']}
-            taf={origin['taf']}
-          />
-          <Text>{general['air_distance']}nm</Text>
-          <Airport
-            airportName={destination['name']}
-            airportIcao={destination['icao_code']}
-            runwayInUse={destination['plan_rwy']}
-            transAlt={destination['trans_alt']}
-            transLvl={destination['trans_level']}
-            metar={destination['metar']}
-            taf={destination['taf']}
-          />
+          <AirportView airport={origin} />
+          <Text>{general.air_distance}nm</Text>
+          <AirportView airport={destination} />
         </Grid>
         <Text>
           Route
@@ -94,11 +104,7 @@ const GeneralDetails = ({
             onClick={() => openToSkyVector()}
           />
         </Text>
-        {showRouteMap && (
-          <Fade in={showRouteMap} animateOpacity>
-            <Image src={routeImageLink} />
-          </Fade>
-        )}
+        {showRouteMap && <Image src={routeImageLink} />}
 
         <Tooltip label="Click to copy to clipboard">
           <Text
@@ -107,7 +113,7 @@ const GeneralDetails = ({
             onClick={copyToClipboard}
             style={{ cursor: 'pointer' }}
           >
-            {general['route']}
+            {general?.route}
           </Text>
         </Tooltip>
       </Stack>
@@ -116,10 +122,11 @@ const GeneralDetails = ({
         <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing={10}>
           <Stat>
             <StatLabel fontSize="md">Cruise Level</StatLabel>
-            <StatNumber>FL{general['initial_altitude'] / 100}</StatNumber>
+            <StatNumber>
+              FL{parseInt(general.initial_altitude) / 100}
+            </StatNumber>
             <StatHelpText>
-              {general['stepclimb_string'] !== '' ||
-              general['stepclimb_string'] !== null
+              {general?.stepclimb_string !== ''
                 ? 'Step Required'
                 : 'No Step Required'}
             </StatHelpText>
@@ -127,13 +134,13 @@ const GeneralDetails = ({
           <Stat>
             <StatLabel fontSize="md">Average Wind</StatLabel>
             <StatNumber>
-              {general['avg_wind_dir']} / {general['avg_wind_spd']}
+              {general.avg_wind_dir} / {general.avg_wind_spd} kts
             </StatNumber>
             <StatHelpText>Cruise Level</StatHelpText>
           </Stat>
           <Stat>
             <StatLabel fontSize="md">Cost Index</StatLabel>
-            <StatNumber>{general['costindex']}</StatNumber>
+            <StatNumber>{general.costindex}</StatNumber>
             <StatHelpText>Recommended</StatHelpText>
           </Stat>
         </SimpleGrid>
@@ -142,4 +149,4 @@ const GeneralDetails = ({
   );
 };
 
-export default GeneralDetails;
+export default Overview;

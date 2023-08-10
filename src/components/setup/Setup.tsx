@@ -1,9 +1,13 @@
 import { Button, Heading, Input, Text, VStack } from '@chakra-ui/react';
 import { useState } from 'react';
 
-const Setup = ({ onComplete }) => {
-  const [userName, setUserName] = useState('');
-  const saveUsername = e => {
+interface SetupProps {
+  onComplete: () => void;
+}
+
+const Setup = ({ onComplete }: SetupProps) => {
+  const [userName, setUserName] = useState<string>('');
+  const saveUsername = () => {
     localStorage.setItem('u', userName);
     onComplete();
   };
@@ -21,12 +25,10 @@ const Setup = ({ onComplete }) => {
             setUserName(e.target.value);
           }}
         />
-        {userName.length > 0 ? (
+        {userName.length > 0 && (
           <Button colorScheme="green" onClick={saveUsername}>
             Save Username
           </Button>
-        ) : (
-          ''
         )}
       </VStack>
     </div>

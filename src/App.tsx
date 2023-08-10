@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import {
   ChakraProvider,
   Box,
@@ -14,13 +14,13 @@ import Flightplan from './components/flightplan/Flightplan';
 import { displayToast } from './utils/toast';
 
 function App() {
-  const [setupRequired, setSetupRequired] = useState(true);
+  const [setupRequired, setSetupRequired] = useState<boolean>(true);
 
-  const usernameExists = () => {
+  const usernameExists = (): boolean => {
     return localStorage.getItem('u') !== null;
   };
 
-  const logOut = () => {
+  const logOut = (): void => {
     localStorage.removeItem('u');
     setSetupRequired(true);
     displayToast(
@@ -30,7 +30,7 @@ function App() {
     );
   };
 
-  const setupCompleted = () => {
+  const setupCompleted = (): void => {
     setSetupRequired(false);
     displayToast(
       'Logged in',

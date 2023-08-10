@@ -16,24 +16,21 @@ import {
   SimpleGrid,
   Box,
 } from '@chakra-ui/react';
+import { Airport } from '../types';
 
-const Airport = ({
-  airportName,
-  airportIcao,
-  runwayInUse,
-  transAlt,
-  transLvl,
-  metar,
-  taf,
-}) => {
+interface AirportProps {
+  airport: Airport;
+}
+
+const AirportView = ({ airport }: AirportProps) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
+
   return (
     <>
-      {/* TODO: Figure out a good reusable way to export this modal into its own component */}
       <Modal isOpen={isOpen} onClose={onClose} size="3xl">
         <ModalOverlay />
         <ModalContent>
-          <ModalHeader>{airportName} Information</ModalHeader>
+          <ModalHeader>{airport.name} Information</ModalHeader>
           <ModalCloseButton color="red.400" />
           <ModalBody>
             <Container maxW={'inherit'} mt={1}>
@@ -43,8 +40,8 @@ const Airport = ({
                 justifyContent={'space-evenly'}
                 mb={4}
               >
-                <Text>Transition Altitude {transAlt ?? '?'}</Text>
-                <Text>Transition Level {transLvl ?? '?'}</Text>
+                <Text>Transition Altitude {airport.trans_alt ?? '?'}</Text>
+                <Text>Transition Level {airport.trans_level ?? '?'}</Text>
               </Grid>
               <SimpleGrid
                 columns={{ base: 1, md: 1, lg: 1 }}
@@ -53,11 +50,11 @@ const Airport = ({
               >
                 <Box>
                   <Text as="b">METAR</Text>
-                  <Text>{metar}</Text>
+                  <Text>{airport.metar}</Text>
                 </Box>
                 <Box>
                   <Text as="b">TAF</Text>
-                  <Text>{taf}</Text>
+                  <Text>{airport.taf}</Text>
                 </Box>
               </SimpleGrid>
             </Container>
@@ -69,14 +66,14 @@ const Airport = ({
           </ModalFooter>
         </ModalContent>
       </Modal>
-      <Tooltip label={airportName ?? ''}>
+      <Tooltip label={airport.name ?? ''}>
         <Heading fontSize="2xl" style={{ cursor: 'pointer' }} onClick={onOpen}>
-          {airportIcao}
-          <Text fontSize="xs">({runwayInUse ?? '?'})</Text>
+          {airport.icao_code}
+          <Text fontSize="xs">({airport.plan_rwy ?? '?'})</Text>
         </Heading>
       </Tooltip>
     </>
   );
 };
 
-export default Airport;
+export default AirportView;

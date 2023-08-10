@@ -8,17 +8,23 @@ import {
   StatNumber,
   Text,
 } from '@chakra-ui/react';
-import React from 'react';
 import { formatFloat } from '../../utils/number';
+import { Fuel, Weights } from '../../types';
 
-const Weight = ({ generalWeights, fuel }) => {
-  const alternateFuel = () => {
+interface WeightsProps {
+  weights: Weights;
+  fuel: Fuel;
+}
+
+const Weight = ({ weights, fuel }: WeightsProps) => {
+  const alternateFuel = (): number => {
     return (
-      parseInt(fuel['alternate_burn']) +
-      parseInt(fuel['contingency']) +
-      parseInt(fuel['reserve'])
+      parseInt(fuel.alternate_burn) +
+      parseInt(fuel.contingency) +
+      parseInt(fuel.reserve)
     );
   };
+
   return (
     <Box p={4}>
       <Heading fontSize={'3xl'}>Weights</Heading>
@@ -29,27 +35,27 @@ const Weight = ({ generalWeights, fuel }) => {
         <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing={10}>
           <Stat>
             <StatLabel fontSize="md">Takeoff Fuel</StatLabel>
-            <StatNumber>{formatFloat(fuel['plan_takeoff'])}</StatNumber>
+            <StatNumber>{formatFloat(fuel.plan_takeoff)}</StatNumber>
           </Stat>
           <Stat>
             <StatLabel fontSize="md">Reserve Fuel</StatLabel>
-            <StatNumber>{formatFloat(alternateFuel())}</StatNumber>
+            <StatNumber>{formatFloat(alternateFuel().toString())}</StatNumber>
           </Stat>
           <Stat>
             <StatLabel fontSize="md">Landing Fuel</StatLabel>
-            <StatNumber>{formatFloat(fuel['plan_landing'])}</StatNumber>
+            <StatNumber>{formatFloat(fuel.plan_landing)}</StatNumber>
           </Stat>
           <Stat>
             <StatLabel fontSize="md">Passengers</StatLabel>
-            <StatNumber>{generalWeights['pax_count']}</StatNumber>
+            <StatNumber>{weights.pax_count}</StatNumber>
           </Stat>
           <Stat>
             <StatLabel fontSize="md">Cargo</StatLabel>
-            <StatNumber>{formatFloat(generalWeights['cargo'])}</StatNumber>
+            <StatNumber>{formatFloat(weights.cargo)}</StatNumber>
           </Stat>
           <Stat>
             <StatLabel fontSize="md">Zero Fuel Weight</StatLabel>
-            <StatNumber>{formatFloat(generalWeights['est_zfw'])}</StatNumber>
+            <StatNumber>{formatFloat(weights.est_zfw)}</StatNumber>
           </Stat>
         </SimpleGrid>
       </Container>

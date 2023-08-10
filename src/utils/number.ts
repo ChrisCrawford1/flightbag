@@ -1,3 +1,3 @@
-export function formatFloat(value) {
+export function formatFloat(value: string): string {
   return parseFloat(value).toLocaleString('en-US');
 }
