@@ -8,13 +8,14 @@ import {
   CloseButton,
   Tooltip,
 } from '@chakra-ui/react';
-import { ColorModeSwitcher } from './ColorModeSwitcher';
+import { Actions } from './Actions';
 import Setup from './components/setup/Setup';
 import Flightplan from './components/flightplan/Flightplan';
 import { displayToast } from './utils/toast';
 
 function App() {
   const [setupRequired, setSetupRequired] = useState<boolean>(true);
+  const [demoModeEnabled, setDemoModeEnabled] = useState<boolean>(false);
 
   const usernameExists = (): boolean => {
     return localStorage.getItem('u') !== null;
@@ -39,20 +40,28 @@ function App() {
     );
   };
 
+  const toggleDemoMode = () => {
+    setSetupRequired(false);
+    setDemoModeEnabled(true);
+  };
+
   useEffect(() => {
     if (usernameExists()) {
       setSetupRequired(false);
     } else {
       setSetupRequired(true);
     }
-  }, [setupRequired]);
+  }, []);
 
   return (
     <ChakraProvider theme={theme}>
       <Box textAlign="center" fontSize="xl">
         <Grid minH="100vh" p={3}>
           <Grid display="flex" flexDirection="row" justifySelf="flex-end">
-            <ColorModeSwitcher />
+            <Actions
+              onDemoModeToggle={toggleDemoMode}
+              showDemoMode={setupRequired}
+            />
             {!setupRequired && (
               <Tooltip label="Remove username and log out">
                 <CloseButton w={10} h={10} onClick={logOut} />
@@ -67,7 +76,7 @@ function App() {
               </VStack>
             </Box>
           ) : (
-            <Flightplan />
+            <Flightplan demoModeEnabled={demoModeEnabled} />
           )}
         </Grid>
       </Box>
