@@ -1,0 +1,12 @@
+{
+  "files": {
+    "main.js": "/flightbag/static/js/main.4341ef8c.js",
+    "static/js/453.175ea8cf.chunk.js": "/flightbag/static/js/453.175ea8cf.chunk.js",
+    "index.html": "/flightbag/index.html",
+    "main.4341ef8c.js.map": "/flightbag/static/js/main.4341ef8c.js.map",
+    "453.175ea8cf.chunk.js.map": "/flightbag/static/js/453.175ea8cf.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/js/main.4341ef8c.js"
+  ]
+}
