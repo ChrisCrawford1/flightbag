@@ -1,12 +1,12 @@
 {
   "files": {
-    "main.js": "/flightbag/static/js/main.4341ef8c.js",
+    "main.js": "/flightbag/static/js/main.143850af.js",
     "static/js/453.175ea8cf.chunk.js": "/flightbag/static/js/453.175ea8cf.chunk.js",
     "index.html": "/flightbag/index.html",
-    "main.4341ef8c.js.map": "/flightbag/static/js/main.4341ef8c.js.map",
+    "main.143850af.js.map": "/flightbag/static/js/main.143850af.js.map",
     "453.175ea8cf.chunk.js.map": "/flightbag/static/js/453.175ea8cf.chunk.js.map"
   },
   "entrypoints": [
-    "static/js/main.4341ef8c.js"
+    "static/js/main.143850af.js"
   ]
 }
