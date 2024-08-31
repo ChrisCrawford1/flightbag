@@ -200,25 +200,25 @@ export const DemoFlightPlan: SimbriefFlightplan = {
     "vatsim": {
       "name": "VATSIM",
       "site": "my.vatsim.net",
-      "link": "https://my.vatsim.net/pilots/flightplan?raw=%28FPL-ASL73A-IS+-A319%2FM-SDE3FGHIRWY%2FLB1+-LYBE1155+-N0443F380+TUVAR+DCT+LURID+DCT+GISER+DCT+LABIN%2FN0351F180+L614+KOPER%2FN0441F370+DCT+LAGEN%2FN0354F190+Q712+ENOBA+DCT+BADBA%2FN0441F380+DCT+KOLON%2FN0442F370+DCT+GANGU+UM984+DIVKO+DCT+BISBA+-LEBL0212+LEIB+-PBN%2FA1B1C1D1O1S1+DOF%2F240831+REG%2FGSMOL+EET%2FLDZO0010+LQSB0019+LDZO0024+LQSB0025+LDZO0027+LIMM0043+LFFF0118+LECB0145+OPR%2FASL+PER%2FC+RMK%2FTCAS+SIMBRIEF%29&fuel_time=0356",
-      "form": "<form method=\"GET\" action=\"https://my.vatsim.net/pilots/flightplan\" target=\"_blank\"> <button type=\"submit\">Pre-file on VATSIM</button> <input type=\"hidden\" name=\"raw\" value=\"(FPL-ASL73A-IS -A319/M-SDE3FGHIRWY/LB1 -LYBE1155 -N0443F380 TUVAR DCT LURID DCT GISER DCT LABIN/N0351F180 L614 KOPER/N0441F370 DCT LAGEN/N0354F190 Q712 ENOBA DCT BADBA/N0441F380 DCT KOLON/N0442F370 DCT GANGU UM984 DIVKO DCT BISBA -LEBL0212 LEIB -PBN/A1B1C1D1O1S1 DOF/240831 REG/GSMOL EET/LDZO0010 LQSB0019 LDZO0024 LQSB0025 LDZO0027 LIMM0043 LFFF0118 LECB0145 OPR/ASL PER/C RMK/TCAS SIMBRIEF)\"> <input type=\"hidden\" name=\"fuel_time\" value=\"0356\"> </form>"
+      "link": "",
+      "form": ""
     },
     "ivao": {
       "name": "IVAO",
       "site": "fpl.ivao.aero",
-      "link": "https://fpl.ivao.aero/flight-plans/create?flightPlan=eyJjYWxsc2lnbiI6IkFTTDczQSIsImZsaWdodFJ1bGVzIjoiSSIsImZsaWdodFR5cGUiOiJTIiwiYWlyY3JhZnROdW1iZXIiOjEsImFpcmNyYWZ0SWQiOiJBMzE5IiwiYWlyY3JhZnRXYWtlVHVyYnVsZW5jZSI6Ik0iLCJhaXJjcmFmdEVxdWlwbWVudHMiOlsiUyIsIkQiLCJFMyIsIkYiLCJHIiwiSCIsIkkiLCJSIiwiVyIsIlkiXSwiYWlyY3JhZnRUcmFuc3BvbmRlclR5cGVzIjpbIkwiLCJCMSJdLCJkZXBhcnR1cmVJZCI6IkxZQkUiLCJkZXBhcnR1cmVUaW1lIjo0MjkwMCwiY3J1aXNpbmdTcGVlZFR5cGUiOiJOIiwiY3J1aXNpbmdTcGVlZCI6NDQzLCJhbHRpdHVkZVR5cGUiOiJGIiwiYWx0aXR1ZGUiOjM4MCwicm91dGUiOiJUVVZBUiBEQ1QgTFVSSUQgRENUIEdJU0VSIERDVCBMQUJJTi9OMDM1MUYxODAgTDYxNCBLT1BFUi9OMDQ0MUYzNzAgRENUIExBR0VOL04wMzU0RjE5MCBRNzEyIEVOT0JBIERDVCBCQURCQS9OMDQ0MUYzODAgRENUIEtPTE9OL04wNDQyRjM3MCBEQ1QgR0FOR1UgVU05ODQgRElWS08gRENUIEJJU0JBIiwiYXJyaXZhbElkIjoiTEVCTCIsImVldCI6NzkyMCwiYWx0ZXJuYXRpdmVJZCI6IkxFSUIiLCJhbHRlcm5hdGl2ZTJJZCI6bnVsbCwicmVtYXJrcyI6IlBCTi9BMUIxQzFEMU8xUzEgRE9GLzI0MDgzMSBSRUcvR1NNT0wgRUVUL0xEWk8wMDEwIExRU0IwMDE5IExEWk8wMDI0IExRU0IwMDI1IExEWk8wMDI3IExJTU0wMDQzIExGRkYwMTE4IExFQ0IwMTQ1IE9QUi9BU0wgUEVSL0MgUk1LL1RDQVMgU0lNQlJJRUYiLCJlbmR1cmFuY2UiOjE0MTYwLCJwb2IiOjExNX0=",
-      "form": "<form action=\"https://fpl.ivao.aero/flight-plans/create\" method=\"GET\" target=\"_blank\">\n<button type=\"submit\">Pre-file on IVAO</button>\n<input type=\"hidden\" name=\"flightPlan\" value=\"eyJjYWxsc2lnbiI6IkFTTDczQSIsImZsaWdodFJ1bGVzIjoiSSIsImZsaWdodFR5cGUiOiJTIiwiYWlyY3JhZnROdW1iZXIiOjEsImFpcmNyYWZ0SWQiOiJBMzE5IiwiYWlyY3JhZnRXYWtlVHVyYnVsZW5jZSI6Ik0iLCJhaXJjcmFmdEVxdWlwbWVudHMiOlsiUyIsIkQiLCJFMyIsIkYiLCJHIiwiSCIsIkkiLCJSIiwiVyIsIlkiXSwiYWlyY3JhZnRUcmFuc3BvbmRlclR5cGVzIjpbIkwiLCJCMSJdLCJkZXBhcnR1cmVJZCI6IkxZQkUiLCJkZXBhcnR1cmVUaW1lIjo0MjkwMCwiY3J1aXNpbmdTcGVlZFR5cGUiOiJOIiwiY3J1aXNpbmdTcGVlZCI6NDQzLCJhbHRpdHVkZVR5cGUiOiJGIiwiYWx0aXR1ZGUiOjM4MCwicm91dGUiOiJUVVZBUiBEQ1QgTFVSSUQgRENUIEdJU0VSIERDVCBMQUJJTi9OMDM1MUYxODAgTDYxNCBLT1BFUi9OMDQ0MUYzNzAgRENUIExBR0VOL04wMzU0RjE5MCBRNzEyIEVOT0JBIERDVCBCQURCQS9OMDQ0MUYzODAgRENUIEtPTE9OL04wNDQyRjM3MCBEQ1QgR0FOR1UgVU05ODQgRElWS08gRENUIEJJU0JBIiwiYXJyaXZhbElkIjoiTEVCTCIsImVldCI6NzkyMCwiYWx0ZXJuYXRpdmVJZCI6IkxFSUIiLCJhbHRlcm5hdGl2ZTJJZCI6bnVsbCwicmVtYXJrcyI6IlBCTi9BMUIxQzFEMU8xUzEgRE9GLzI0MDgzMSBSRUcvR1NNT0wgRUVUL0xEWk8wMDEwIExRU0IwMDE5IExEWk8wMDI0IExRU0IwMDI1IExEWk8wMDI3IExJTU0wMDQzIExGRkYwMTE4IExFQ0IwMTQ1IE9QUi9BU0wgUEVSL0MgUk1LL1RDQVMgU0lNQlJJRUYiLCJlbmR1cmFuY2UiOjE0MTYwLCJwb2IiOjExNX0=\">\n</form>"
+      "link": "",
+      "form": ""
     },
     "pilotedge": {
       "name": "PilotEdge",
       "site": "www.pilotedge.net",
-      "link": "https://www.pilotedge.net/pilot_tools/file?flightplan[type]=IFR&flightplan[aircraft_identification]=ASL73A&flightplan[aircraft_type]=A319&flightplan[aircraft_equipment]=L&flightplan[heavy]=0&flightplan[airspeed]=443&flightplan[departing_airport]=LYBE&flightplan[arriving_airport]=LEBL&flightplan[altitude]=38000&flightplan[alternate_airport]=LEIB&flightplan[route]=TUVAR LURID GISER LABIN/N0351F180 L614 KOPER/N0441F370 LAGEN/N0354F190 Q712 ENOBA BADBA/N0441F380 KOLON/N0442F370 GANGU UM984 DIVKO BISBA&flightplan[remarks]=RMK/SIMBRIEF",
+      "link": "",
       "form": ""
     },
     "poscon": {
       "name": "POSCON",
       "site": "hq.poscon.net",
-      "link": "https://hq.poscon.net/flightplan/create?flightRules=I&callsign=ASL73A&isRegistration=N&flightType=S&numOfAircraft=1&aircraftType=A319&wakeTurbulence=M&equipmentCode=S%2CD%2CE3%2CF%2CG%2CH%2CI%2CR%2CW%2CY&ssr=L%2CB1&departureApt=LYBE&dateOfFlight=240831&depTime=1155&speed=N0443&cruiseAlt=F380&route=TUVAR+DCT+LURID+DCT+GISER+DCT+LABIN%2FN0351F180+L614+KOPER%2FN0441F370+DCT+LAGEN%2FN0354F190+Q712+ENOBA+DCT+BADBA%2FN0441F380+DCT+KOLON%2FN0442F370+DCT+GANGU+UM984+DIVKO+DCT+BISBA&destinationApt=LEBL&ete=0212&firstAlt=LEIB&secondAlt=&status=&pbn=A1%2CB1%2CC1%2CD1%2CO1%2CS1&performanceCat=C&otherInformation=PBN%2FA1B1C1D1O1S1+DOF%2F240831+REG%2FGSMOL+EET%2FLDZO0010+LQSB0019+LDZO0024+LQSB0025+LDZO0027+LIMM0043+LFFF0118+LECB0145+OPR%2FASL+PER%2FC+RMK%2FTCAS+SIMBRIEF&endurance=0356&numOnBoard=115&emergencyRadio=&waterEquipment=&remarks=TCAS+SIMBRIEF",
+      "link": "",
       "form": ""
     }
   },
