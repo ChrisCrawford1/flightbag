@@ -13,12 +13,14 @@ import {
   Stack,
   Tooltip,
   Image,
+  Button,
+  Link,
 } from '@chakra-ui/react';
 import { useEffect, useState } from 'react';
 import AirportView from '../AirportView';
 import { openInNewTab } from '../../utils/redirect';
 import { displayToast } from '../../utils/toast';
-import { General, Airport, Images, Links, Aircraft } from '../../types';
+import { General, Airport, Images, Links, Aircraft, Prefile } from '../../types';
 
 interface OverviewProps {
   origin: Airport;
@@ -27,6 +29,7 @@ interface OverviewProps {
   images: Images;
   links: Links;
   aircraft: Aircraft;
+  prefile: Prefile;
 }
 
 const Overview = ({
@@ -36,6 +39,7 @@ const Overview = ({
   images,
   links,
   aircraft,
+  prefile,
 }: OverviewProps) => {
   const [showRouteMap, setShowRouteMap] = useState(false);
   const [routeImageLink, setRouteImageLink] = useState<string>('');
@@ -104,7 +108,27 @@ const Overview = ({
             onClick={() => openToSkyVector()}
           />
         </Text>
-        {showRouteMap && <Image src={routeImageLink} />}
+        {showRouteMap && 
+        <>
+        <Text fontSize="md">
+          Network Prefile
+        </Text>
+        <Grid display="flex" justifyContent="space-around">
+          <Link href={prefile.vatsim.link} fontSize="sm" isExternal>
+            Vatsim <ExternalLinkIcon mx='2px' />
+          </Link>
+          
+          <Link href={prefile.ivao.link} fontSize="sm" isExternal>
+            IVAO <ExternalLinkIcon mx='2px' />
+          </Link>
+          
+          <Link href={prefile.pilotedge.link} fontSize="sm" isExternal>
+            PilotEdge <ExternalLinkIcon mx='2px' />
+          </Link>
+        </Grid>
+          <Image src={routeImageLink} />
+        </>
+        }
 
         <Tooltip label="Click to copy to clipboard">
           <Text

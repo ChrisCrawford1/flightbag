@@ -34,6 +34,7 @@ const Flightplan = ({ demoModeEnabled }: FlightplanProps) => {
     if (!demoModeEnabled) {
       try {
         const flightplan = await FetchLatestFlightplan(username);
+        console.log(flightplan);
         setFlightplan(flightplan);
         setFlightplanReady(true);
         return;
@@ -67,6 +68,7 @@ const Flightplan = ({ demoModeEnabled }: FlightplanProps) => {
             images={flightplan.images}
             links={flightplan.links}
             aircraft={flightplan.aircraft}
+            prefile={flightplan.prefile}
           />
           <Weight weights={flightplan.weights} fuel={flightplan.fuel} />
         </>

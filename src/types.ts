@@ -149,6 +149,20 @@ export interface Links {
   skyvector: string;
 }
 
+export interface PrefileNetwork {
+  form: string;
+  link: string;
+  name: string;
+  site: string;
+}
+
+export interface Prefile {
+  vatsim: PrefileNetwork;
+  ivao: PrefileNetwork;
+  pilotedge: PrefileNetwork;
+  poscon: PrefileNetwork;
+}
+
 export interface SimbriefFlightplan {
   fetch: Fetch;
   params: Params;
@@ -161,4 +175,5 @@ export interface SimbriefFlightplan {
   images: Images;
   links: Links;
   aircraft: Aircraft;
+  prefile: Prefile;
 }
